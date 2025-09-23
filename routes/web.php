@@ -31,3 +31,4 @@ Route::get('/about', function () {
 });
 
 Route::get ('/matakuliah/{param1}/{param2?}', [MatakuliahController::class, 'index']);
+
