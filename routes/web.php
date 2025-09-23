@@ -37,4 +37,4 @@ Route::get ('/matakuliah/{param1}/{param2?}', [MatakuliahController::class, 'ind
 Route::get ('/home', [HomeController::class, 'index']);
 
 
-Route::get ('/pegawai', [HomeController::class, 'index']);
+Route::get ('/pegawai', [PegawaiController::class, 'index']);

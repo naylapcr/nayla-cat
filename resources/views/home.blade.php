@@ -1,27 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Pegawai</title>
 </head>
 <body>
-    <h1>Informasi Pegawai</h1>
+    <h1>Profil Saya</h1>
+    <p><b>Nama:</b> {{ $name }}</p>
+    <p><b>Umur:</b> {{ $my_age }} tahun</p>
+    <p><b>Hobi:</b></p>
     <ul>
-        <li><strong>Nama:</strong> {{ $name }}</li>
-        <li><strong>Umur:</strong> {{ $my_age }} tahun</li>
-        <li><strong>Hobi:</strong>
-            <ul>
-                @foreach ($hobbies as $hobby)
-                    <li>{{ $hobby }}</li>
-                @endforeach
-            </ul>
-        </li>
-        <li><strong>Tanggal Harus Wisuda:</strong> {{ $tgl_harus_wisuda }}</li>
-        <li><strong>Sisa Hari Belajar:</strong> {{ $time_to_study_left }} hari</li>
-        <li><strong>Semester Saat Ini:</strong> {{ $current_semester }}</li>
-        <li><strong>Pesan:</strong> {{ $semester_info }}</li>
-        <li><strong>Cita-cita:</strong> {{ $future_goal }}</li>
+        @foreach ($hobbies as $hobi)
+            <li>{{ $hobi }}</li>
+        @endforeach
     </ul>
+    <p><b>Tanggal Harus Wisuda:</b> {{ $tgl_harus_wisuda }}</p>
+    <p><b>Sisa Hari Menuju Wisuda:</b> {{ $time_to_study_left }} hari</p>
+    <p><b>Semester Saat Ini:</b> {{ $current_semester }}</p>
+    <p><b>Info Semester:</b> {{ $info_semester }}</p>
+    <p><b>Cita-cita:</b> {{ $future_goal }}</p>
 </body>
 </html>
