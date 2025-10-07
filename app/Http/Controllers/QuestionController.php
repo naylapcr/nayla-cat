@@ -38,11 +38,13 @@ class QuestionController extends Controller
                 'email.email'   => 'Email tidak valid',
             ]);
 
-        $data['nama']       = $request->nama;
-        $data['email']      = $request->email;
-        $data['pertanyaan'] = $request->pertanyaan;
+            $data['nama']       = $request->nama;
+            $data['email']      = $request->email;
+            $data['pertanyaan'] = $request->pertanyaan;
 
-        return view('home-question-respon', $data);
+        // return view('home-question-respon', $data);
+        return redirect()->route('home')
+        ->with('info', 'Terimakasih atas pertanyaannya'. $data['nama'].'!');
     }
 
     /**
