@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('content')
-{{-- start main content --}}
+        {{-- start main content --}}
         <div class="py-4">
             <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
                 <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
@@ -111,3 +111,5 @@
             </div>
         </div>
         {{-- end main content --}}
+
+@endsection
