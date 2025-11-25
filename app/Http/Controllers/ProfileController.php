@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -15,21 +17,21 @@ class ProfileController extends Controller
     // Update the user's profile picture
     public function update(Request $request)
     {
-        $request->validate([
-            'profile_picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        $$request->validate([
+            'profile_picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Aturan validasi [cite: 10]
         ]);
 
-        $user = Auth::user();
+        $user = Auth::user(); // Menggunakan facade Auth [cite: 10]
 
         // Delete the old profile picture if it exists
         if ($user->profile_picture) {
-            Storage::disk('public')->delete($user->profile_picture);
+            Storage::disk('public')->delete($user->profile_picture); // Menggunakan Storage facade [cite: 11]
         }
 
         // Store the new profile picture
-        $path = $request->file('profile_picture')->store('profile_pictures', 'public');
+        $path = $request->file('profile_picture')->store('profile_pictures', 'public'); // Simpan file [cite: 12]
         $user->profile_picture = $path;
-        $user->save();
+        $user->save(); // Simpan perubahan di database [cite: 12]
 
         return redirect()->route('profile.edit')->with('success', 'Profile picture updated successfully!');
     }
