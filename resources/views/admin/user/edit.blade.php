@@ -1,7 +1,5 @@
-@extends('layouts.admin.app')
-
+ @extends('layouts.admin.app')
 @section('content')
-        {{-- start main content --}}
         <div class="py-4">
             <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
                 <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
@@ -13,68 +11,62 @@
                         </a>
                     </li>
                     <li class="breadcrumb-item"><a href="#">User</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Edit Data</li>
+                    <li class="breadcrumb-item active" aria-current="page">Tambah User</li>
                 </ol>
             </nav>
             <div class="d-flex justify-content-between w-100 flex-wrap">
                 <div class="mb-3 mb-lg-0">
-                    <h1 class="h4">Edit User</h1>
-                    <p class="mb-0">Form untuk menambahkan data user baru.</p>
+                    @csrf
+                    <h1 class="h4">Edit User </h1>
+                    <p class="mb-0">Form untuk mengedit data User baru.</p>
                 </div>
                 <div>
-                    <a href="{{ route('dashboard') }}" class="btn btn-primary"><i class="far fa-question-circle me-1"></i> Kembali</a>
+                    <a href="" class="btn btn-primary"><i class="far fa-question-circle me-1"></i> Kembali</a>
                 </div>
             </div>
         </div>
-            @if (session('success'))
-            <div class="alert alert-info">
-            {!! session('success') !!}
-    </div>
-        @endif
+
         <div class="row">
             <div class="col-12 mb-4">
                 <div class="card border-0 shadow components-section">
                     <div class="card-body">
-                        <form action="{{ route('user.update', $dataUser->id) }}" method="POST">
+                        <form action="{{ route('user.update',$dataUser->id) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="row mb-4">
                                 <div class="col-lg-4 col-sm-6">
-                                    <!-- Name -->
-                                    div class="mb-3">
-                                        <label for="name" class="form-label">Name</label>
-                                        <input type="text" id="name" class="form-control" required
-                                            name ="name" value="{{ $dataUser->name }}">
+                                     <!--Nama lengkap -->
+                                    <div class="mb-3">
+                                        <label for="name" class="form-label">Nama Lengkap</label>
+                                        <input type="text" id="name" class="form-control" required name="name" value="{{ $dataUser->name }}">
                                     </div>
 
                                     <!-- Email -->
-                                    <<div class="mb-3">
+                                    <div class="mb-3">
                                         <label for="email" class="form-label">Email</label>
-                                        <input type="email" id="email" class="form-control" required
-                                            name ="email" value="{{ $dataUser->email }}">
-                                    </div>
-
-                                <div class="col-lg-4 col-sm-6">
-                                    {{-- password --}}
-                                    <div class="mb-3">
-                                        <label for="password" class="form-label">Password</label>
-                                        <input type="password" id="password" class="form-control" required
-                                            name ="password" value="{{ $dataUser->password }}">
-                                    </div>
-
-                                    {{-- password confirmation --}}
-                                    <div class="mb-3">
-                                        <label for="password" class="form-label">Konfirmasi Password</label>
-                                        <input type="password" id="password" class="form-control" required
-                                            name ="password_confirmation" value="{{ $dataUser->password_confirmation }}">
+                                        <input type="email" id="email" class="form-control" required name="email" value="{{ $dataUser->email }}">
                                     </div>
                                 </div>
+
+
                                 <div class="col-lg-4 col-sm-12">
+                                    <!-- password -->
+                                    <div class="mb-3">
+                                        <label for="password" class="form-label">password</label>
+                                        <input type="password" id="password" class="form-control" required name="password" value="{{ $dataUser->password }}">
+                                    </div>
+
+                                    <!-- confirm password -->
+                                    <div class="mb-3">
+                                        <label for="password_confimation" class="form-label"> confirm password</label>
+                                        <input type="password" id="password_confimation" class="form-control" name="password_confimation" value="{{ $dataUser->password_confimation }}">
+                                    </div>
+
 
                                     <!-- Buttons -->
                                     <div class="">
-                                        <button type="submit" class="btn btn-primary">Simpan</button>
-                                        <a href="{{ route('user.index') }}" class="btn btn-outline-secondary ms-2">Batal</a>
+                                        <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                                        <a href="{{ route('user.index') }}" class="btn btn-outline-secondary ms-2">Batal</a name="submit">
                                     </div>
                                 </div>
                             </div>
@@ -84,6 +76,4 @@
                 </div>
             </div>
         </div>
-    {{-- end main content --}}
-
 @endsection
