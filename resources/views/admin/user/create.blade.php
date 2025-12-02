@@ -65,6 +65,18 @@
                                     <label for="password" class="form-label">Password</label>
                                     <input type="password" id="password" class="form-control" name="password">
                                 </div>
+
+                                <div class="mb-3">
+                                    <label for="role" class="form-label">Role</label>
+                                    <select id="role" name="role" class="form-select" name="role"
+                                        value="{{ old('role') }}">
+                                        <option value="">-- Pilih --</option>
+                                        <option value="Super Admin">Super Admin</option>
+                                        <option value="Pelanggan">Pelanggan</option>
+                                        <option value="Mitra">Mitra</option>
+                                    </select>
+                                </div>
+                            </div>
                                 {{-- ... tombol simpan ... --}}
                                 <div class="">
                                     <button type="submit" class="btn btn-primary">Simpan</button>

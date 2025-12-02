@@ -13,6 +13,8 @@ class DashboardController extends Controller
     public function index()
     {
         if(!Auth::check()){
+            //redirect ke halaman login
+            return redirect()->route('login');
 
 		}
         return view('admin.dashboard');

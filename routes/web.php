@@ -49,7 +49,9 @@ Route::get ('/pegawai', [PegawaiController::class, 'index']);
 Route::post('question/store', [QuestionController::class, 'store'])
 		->name('question.store');
 
-Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('dashboard', [DashboardController::class, 'index'])
+        ->name('dashboard')
+        ->middleware('checkislogin');
 
 Route::resource('pelanggan', PelangganController::class);
 
@@ -58,5 +60,11 @@ Route::resource('user', UserController::class);
 Route::get('/multipleuploads', 'MultipleuploadsController@index')->name('uploads');
 Route::post('/save','MultipleuploadsController@store')->name('uploads.store');
 
-Route::post ('/auth', [AuthController::class, 'login'])-> name('login.store');
-Route::get('/login', [AuthController::class, 'index'])-> name('login');
+Route::post ('/auth/login', [AuthController::class, 'login'])-> name('login.store');
+Route::get('auth', [AuthController::class, 'index'])-> name('login');
+
+Route::get('auth/logout', [AuthController::class, 'logout'])-> name('auth.logout');
+
+Route::group(['middleware' => ['checkrole:Super Admin']], function () {
+    Route::get('user',[UserController::class,'index'])->name('user.index');
+});

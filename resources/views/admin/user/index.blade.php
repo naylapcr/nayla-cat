@@ -61,6 +61,7 @@
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->email }}</td>
                                         <td>{{ $item->password }}</td>
+                                        <td>{{ $item->role }}</td>
                                         <td>
                                             {{-- Tombol Edit dan Hapus tetap sama --}}
                                             <a href="{{ route('user.edit', $item->id) }} "class="btn btn-info btn-sm">
